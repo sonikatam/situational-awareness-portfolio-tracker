@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f7f7f6; color: #18181b; letter-spacing: 0; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #d4d4d8; }
+

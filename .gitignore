@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.vercel/
+supabase/.temp/
+coverage/
+.env
+.env.local
+.env.*.local
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.tsbuildinfo
+.DS_Store
