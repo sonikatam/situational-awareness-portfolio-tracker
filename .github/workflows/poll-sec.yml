@@ -2,7 +2,8 @@ name: Poll SEC filings
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    # 8 AM CST / 9 AM CDT. GitHub cron schedules use UTC.
+    - cron: "0 14 * * *"
   workflow_dispatch:
 
 permissions:
