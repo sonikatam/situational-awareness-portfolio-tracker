@@ -40,8 +40,8 @@ def decimal_value(raw: str | None, field: str, required: bool = True) -> Decimal
 
 
 def value_multiplier(value_element: ET.Element | None, root: ET.Element) -> Decimal:
-    # The SEC 13F XML information-table specification reports `value` in
-    # thousands of dollars. Honor explicit unit/scale metadata when present.
+    # Since January 3, 2023, the SEC 13F XML specification reports `value` in
+    # dollars. Honor explicit unit/scale metadata for older or nonstandard XML.
     attrs: dict[str, str] = {}
     for element in (root, value_element):
         if element is not None:
@@ -56,7 +56,7 @@ def value_multiplier(value_element: ET.Element | None, root: ET.Element) -> Deci
             return Decimal(10) ** Decimal(attrs["scale"])
         except InvalidOperation as exc:
             raise FilingParseError(f"Invalid value scale: {attrs['scale']}") from exc
-    return Decimal(1000)
+    return Decimal(1)
 
 
 def parse_13f_xml(xml_content: bytes | str) -> list[dict[str, Any]]:
@@ -112,4 +112,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
